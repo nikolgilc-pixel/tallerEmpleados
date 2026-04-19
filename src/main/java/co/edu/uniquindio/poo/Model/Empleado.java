@@ -177,4 +177,6 @@ public abstract class Empleado {
                 "Tipo: " + resumen.tipoEmpleado() + "\n" ;
     }
 
+
+
 }

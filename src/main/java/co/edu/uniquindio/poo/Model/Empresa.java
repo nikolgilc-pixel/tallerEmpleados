@@ -67,8 +67,8 @@ public class Empresa {
         //1. Verificcar si el cliente esta registrado:
         Empleado empleadoEncontrado = buscarEmpleado(documento);
         if (empleadoEncontrado != null) {
-            resultado = "El empleado no se puede resgistrar, ya se encuentra en la base de"
-                    + "datos";
+            throw new IllegalArgumentException( "El empleado no se puede resgistrar, ya se encuentra en la base de"
+                    + "datos");
         } else {
             Empleado empleado = new EmpleadoVentas(nombre, documento, edad,
                     categoriaEmpleado, salarioBase, descuentoSalud, descuentoPension, totalVentas, porcentajeComisio);
@@ -231,4 +231,46 @@ public class Empresa {
         }
         return resultado;
     }
+    public ArrayList <Empleado> empleadosConSalarioMayorA (float valorReq){
+        ArrayList <Empleado> resultado= new ArrayList<>();
+        for (Empleado e:listaEmpleados){
+            if (e.calcularSalarioNeto()>valorReq){
+                resultado.add(e);
+            }
+
+        }
+        return resultado;
+
+
+    }
+    public Empleado buscarPorDocumento(String documento){
+        for (Empleado e: listaEmpleados){
+            if(e.getDocumento().equals((documento))){
+                return e;
+            }
+        }
+        return null;
+
+
+    }
+
+    public ArrayList <Empleado> empleadosTempCienHoras(){
+        ArrayList <Empleado> listaTem = new ArrayList<>();
+        for (Empleado e: listaEmpleados){
+            if (e instanceof EmpleadoTemporal){
+                EmpleadoTemporal emp= (EmpleadoTemporal) e;
+                int horas = emp.getDiasTrabajados() * 8;
+
+                if ( horas>100 ){
+                    listaTem.add(e);
+                }
+            }
+
+        }
+        return listaTem;
+
+    }
+
+
+
 }
