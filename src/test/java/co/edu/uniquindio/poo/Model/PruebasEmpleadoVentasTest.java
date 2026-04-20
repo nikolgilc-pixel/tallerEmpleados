@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PruebasEmpleadoVentasTest {
     private static final Logger LOG = Logger.getLogger( PruebasEmpleadoVentasTest.class.getName());
 
+
+
+    //Verificar que el salario bruto de un empleado de ventas se calcule correctamente.
 @Test
 public void calcularSalarioBrutoTest(){
 EmpleadoVentas empleadoVentas= new EmpleadoVentas ("Juan", "1234" , 25, CategoriaEmpleado.JUNIOR,1000000f,
